@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Subtle M3-style press feedback for the big CTA (scale 0.98 + ripple from background). -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:state_enabled="true">
+        <set>
+            <objectAnimator android:propertyName="scaleX" android:valueTo="0.98" android:duration="100" android:valueType="floatType" />
+            <objectAnimator android:propertyName="scaleY" android:valueTo="0.98" android:duration="100" android:valueType="floatType" />
+        </set>
+    </item>
+    <item>
+        <set>
+            <objectAnimator android:propertyName="scaleX" android:valueTo="1" android:duration="160" android:valueType="floatType" />
+            <objectAnimator android:propertyName="scaleY" android:valueTo="1" android:duration="160" android:valueType="floatType" />
+        </set>
+    </item>
+</selector>

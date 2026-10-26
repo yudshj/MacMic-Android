@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 18dp filled stop glyph for compound drawables (RemoteViews can't tint, so colour is baked in). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="18dp"
+    android:height="18dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path android:fillColor="@color/on_secondary_container"
+        android:pathData="M8,6h8a2,2 0 0,1 2,2v8a2,2 0 0,1 -2,2h-8a2,2 0 0,1 -2,-2v-8a2,2 0 0,1 2,-2z" />
+</vector>

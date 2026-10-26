@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pixel Fold inner display (~850dp wide) / landscape: wider side margins so cards don't stretch. -->
+<resources>
+    <dimen name="screen_margin">64dp</dimen>
+</resources>

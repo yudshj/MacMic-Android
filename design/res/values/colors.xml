@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  MacMic phone — Material 3 colour roles, LIGHT scheme (used when the system is in light mode).
+  The dark scheme in values-night/colors.xml is the hero look; INTEGRATION.md explains how to
+  force dark for the whole app if desired. Role names are identical in both files.
+-->
+<resources>
+    <color name="primary">#FF006B5D</color>
+    <color name="on_primary">#FFFFFFFF</color>
+    <color name="primary_container">#FF9EF2E0</color>
+    <color name="on_primary_container">#FF00201B</color>
+    <color name="inverse_primary">#FF6FD8C4</color>
+
+    <color name="secondary">#FF4A635E</color>
+    <color name="on_secondary">#FFFFFFFF</color>
+    <color name="secondary_container">#FFCCE8E1</color>
+    <color name="on_secondary_container">#FF06201B</color>
+
+    <color name="tertiary">#FF3C6380</color>
+    <color name="on_tertiary">#FFFFFFFF</color>
+    <color name="tertiary_container">#FFC8E6FF</color>
+    <color name="on_tertiary_container">#FF001E2F</color>
+
+    <color name="background">#FFF4FBF8</color>
+    <color name="on_background">#FF161D1C</color>
+    <color name="surface">#FFF4FBF8</color>
+    <color name="surface_dim">#FFD5DBD9</color>
+    <color name="surface_bright">#FFF4FBF8</color>
+    <color name="surface_container_lowest">#FFFFFFFF</color>
+    <color name="surface_container_low">#FFEEF5F2</color>
+    <color name="surface_container">#FFE8EFEC</color>
+    <color name="surface_container_high">#FFE3E9E7</color>
+    <color name="surface_container_highest">#FFDDE4E1</color>
+    <color name="on_surface">#FF161D1C</color>
+    <color name="on_surface_variant">#FF3F4947</color>
+    <color name="surface_variant">#FFDAE5E1</color>
+    <color name="inverse_surface">#FF2B3230</color>
+    <color name="inverse_on_surface">#FFECF2EF</color>
+    <color name="outline">#FF6F7977</color>
+    <color name="outline_variant">#FFBEC9C6</color>
+    <color name="scrim">#66000000</color>
+
+    <color name="error">#FFBA1A1A</color>
+    <color name="on_error">#FFFFFFFF</color>
+    <color name="error_container">#FFFFDAD6</color>
+    <color name="on_error_container">#FF410002</color>
+    <color name="success">#FF1B6C3A</color>
+    <color name="on_success">#FFFFFFFF</color>
+    <color name="success_container">#FFA1F5B4</color>
+    <color name="on_success_container">#FF00210C</color>
+    <color name="warning">#FF7C5800</color>
+    <color name="on_warning">#FFFFFFFF</color>
+    <color name="warning_container">#FFFFDEA8</color>
+    <color name="on_warning_container">#FF271900</color>
+
+    <!-- "stop streaming" CTA: restrained red tonal -->
+    <color name="cta_stop_container">#FFFFDAD6</color>
+    <color name="on_cta_stop">#FF8C0009</color>
+
+    <color name="state_idle_dot">#FF6F7977</color>
+    <color name="state_idle_container">#FFE3E9E7</color>
+    <color name="state_idle_on">#FF3F4947</color>
+    <color name="state_waiting_dot">#FFB07D00</color>
+    <color name="state_waiting_container">#FFFFEFCF</color>
+    <color name="state_waiting_on">#FF5C4100</color>
+    <color name="state_connected_dot">#FF006B5D</color>
+    <color name="state_connected_container">#FFD3F7EE</color>
+    <color name="state_connected_on">#FF00513F</color>
+    <color name="state_streaming_dot">#FF1B8A47</color>
+    <color name="state_streaming_container">#FFD6F6DD</color>
+    <color name="state_streaming_on">#FF0C5129</color>
+    <color name="state_error_dot">#FFBA1A1A</color>
+    <color name="state_error_container">#FFFFE4E0</color>
+    <color name="state_error_on">#FF8C0009</color>
+
+    <!-- launcher / splash (same in both schemes) -->
+    <color name="app_icon_background">#FF0F2B27</color>
+
+    <color name="system_bar">#00000000</color>
+    <color name="ripple_on_surface">#1F161D1C</color>
+    <color name="ripple_on_primary">#33FFFFFF</color>
+    <color name="log_time">#FF5F6967</color>
+    <color name="log_text">#FF3F4947</color>
+    <color name="log_warn">#FF7C5800</color>
+    <color name="log_error">#FFBA1A1A</color>
+</resources>

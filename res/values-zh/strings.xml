@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  MacMic phone — UI strings, CHINESE (primary language; any zh-* locale).
+  values/strings.xml holds the complete English fallback with the same keys.
+-->
+<resources>
+    <string name="app_title">MacMic</string>
+    <string name="app_subtitle">手机麦克风服务端</string>
+
+    <!-- state pill (short, uppercase-free; English code shown to TalkBack via contentDescription) -->
+    <string name="state_stopped">未启动</string>
+    <string name="state_waiting">等待连接</string>
+    <string name="state_handshaking">握手中</string>
+    <string name="state_connected">已连接</string>
+    <string name="state_streaming">推流中</string>
+    <string name="state_error">错误</string>
+    <string name="cd_state_pill">当前状态：%1$s</string>
+
+    <!-- hero card -->
+    <string name="hero_title_stopped">服务未启动</string>
+    <string name="hero_sub_stopped">点击下方按钮启动 Mic 服务，Mac 端即可连接本机。</string>
+    <string name="hero_title_waiting">等待 Mac 连接</string>
+    <string name="hero_sub_waiting">在 Mac 上打开 MacMic，选择 Wi-Fi 并填入下方地址，或用 USB 连接。</string>
+    <string name="hero_title_handshaking">正在握手…</string>
+    <string name="hero_sub_handshaking">%1$s 已接入，等待协议握手。</string>
+    <string name="hero_title_connected">已连接</string>
+    <string name="hero_sub_connected">%1$s 已连接，等待开始推流。</string>
+    <string name="hero_title_streaming">正在推流</string>
+    <string name="hero_sub_streaming">麦克风音频正以 Opus 48 kHz 发送到 %1$s。</string>
+    <string name="hero_title_error">服务出错</string>
+    <string name="hero_sub_error_generic">%1$s</string>
+    <string name="hero_title_port_busy">端口 8125 被占用</string>
+    <string name="hero_sub_port_busy">可能有其他 WO Mic 或 MacMic 服务正在运行。关闭它后点击重试，服务也会每 3 秒自动重试。</string>
+    <string name="hero_title_no_permission">需要麦克风权限</string>
+    <string name="hero_sub_no_permission">授予权限后即可启动服务。</string>
+
+    <!-- primary CTA -->
+    <string name="cta_start">启动服务</string>
+    <string name="cta_stop">停止服务</string>
+    <string name="cta_stop_streaming">停止推流</string>
+    <string name="cta_retry">重试</string>
+    <string name="cta_starting">正在启动…</string>
+    <string name="cd_cta_start">启动麦克风服务</string>
+    <string name="cd_cta_stop">停止麦克风服务</string>
+
+    <!-- connection card -->
+    <string name="section_connection">连接信息</string>
+    <string name="label_address">本机地址</string>
+    <string name="label_transport">连接方式</string>
+    <string name="label_peer">对端客户端</string>
+    <string name="label_packets">已发包</string>
+    <string name="label_bytes">已发送</string>
+    <string name="label_uptime">运行时长</string>
+    <string name="address_none">无可用网络</string>
+    <string name="address_format">%1$s:%2$d</string>
+    <string name="address_more">其他接口：%1$s</string>
+    <string name="usb_hint">USB：adb forward tcp:8125 tcp:8125</string>
+    <string name="transport_wifi">Wi-Fi · UDP</string>
+    <string name="transport_usb">USB · TCP（ADB）</string>
+    <string name="transport_none">—</string>
+    <string name="peer_none">未连接</string>
+    <string name="stat_none">—</string>
+    <string name="stat_rate">%1$d 包/秒</string>
+    <string name="stat_dropped">丢弃 %1$d</string>
+    <string name="stat_bitrate">%1$d kbps</string>
+    <string name="stat_sessions">第 %1$d 次会话</string>
+    <string name="copied_toast">已复制 %1$s</string>
+    <string name="cd_copy_address">复制本机地址 %1$s</string>
+
+    <!-- keep-alive card -->
+    <string name="section_keepalive">后台保活</string>
+    <string name="keepalive_title">锁屏、熄屏后继续推流</string>
+    <string name="keepalive_on">前台服务运行中，已持有 WakeLock 与 Wi-Fi 低延迟锁；锁屏通知可随时停止。</string>
+    <string name="keepalive_off">启动后将以前台服务常驻，并在通知栏显示状态。</string>
+    <string name="keepalive_battery">如被系统清理，请在 设置 › 应用 › 电池 中设为“不受限制”。</string>
+    <string name="keepalive_lock_wake">WakeLock</string>
+    <string name="keepalive_lock_wifi">Wi-Fi 锁</string>
+    <string name="keep_screen_title">保持屏幕常亮</string>
+    <string name="keep_screen_desc">仅在本页面打开时生效，更耗电</string>
+
+    <!-- log card -->
+    <string name="section_log">事件日志</string>
+    <string name="log_empty">暂无事件</string>
+    <string name="log_copied">已复制最近事件</string>
+    <string name="cd_copy_log">复制事件日志</string>
+
+    <!-- empty / error banners -->
+    <string name="banner_perm_title">需要麦克风权限</string>
+    <string name="banner_perm_msg">MacMic 需要“麦克风”权限才能采集声音并发送给 Mac。</string>
+    <string name="banner_perm_action">授予权限</string>
+    <string name="banner_perm_denied_msg">权限已被拒绝且不再询问，请到系统设置中手动开启麦克风权限。</string>
+    <string name="banner_perm_settings">打开设置</string>
+    <string name="banner_port_title">端口 8125 被占用</string>
+    <string name="banner_port_msg">可能有其他 WO Mic 或 MacMic 服务正在运行。关闭它后点击重试（每 3 秒自动重试）。</string>
+    <string name="banner_port_action">重试</string>
+    <string name="banner_notif_title">通知已关闭</string>
+    <string name="banner_notif_msg">前台服务仍可运行，但锁屏上看不到状态，也无法从通知停止。</string>
+    <string name="banner_notif_action">开启通知</string>
+    <string name="banner_network_title">未连接 Wi-Fi</string>
+    <string name="banner_network_msg">Wi-Fi 模式需要手机与 Mac 在同一局域网；也可以改用 USB 连接。</string>
+    <string name="banner_stopped_title">服务未启动</string>
+    <string name="banner_stopped_msg">Mac 端暂时无法连接本机。</string>
+    <string name="banner_dismiss">知道了</string>
+
+    <!-- notification -->
+    <string name="notif_channel_name">麦克风服务</string>
+    <string name="notif_channel_desc">显示 Mic 服务的运行状态，并提供停止按钮</string>
+    <string name="notif_title_waiting">等待 Mac 连接</string>
+    <string name="notif_title_connected">已连接 %1$s</string>
+    <string name="notif_title_streaming">正在推流到 %1$s</string>
+    <string name="notif_title_error">Mic 服务出错</string>
+    <string name="notif_text_waiting">%1$s · 端口 8125</string>
+    <string name="notif_text_streaming">%1$s · 已运行</string>
+    <string name="notif_action_stop">停止</string>
+    <string name="notif_action_open">打开</string>
+    <string name="cd_notif_stop">停止麦克风服务</string>
+
+    <!-- misc -->
+    <string name="footer_format">v%1$s · 端口 8125 · libopus %2$s</string>
+    <string name="cd_app_icon">MacMic</string>
+</resources>

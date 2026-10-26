@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Hero card: one tone higher than regular cards for hierarchy (no gradient, no blur). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@color/surface_container_high" />
+    <corners android:radius="@dimen/radius_l" />
+</shape>

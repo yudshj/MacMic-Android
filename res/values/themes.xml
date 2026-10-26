@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  MacMic phone theme (LIGHT system mode). Platform-only: no androidx / Material Components attrs.
+  Colours come from @color/* which flip automatically via values-night/colors.xml.
+  Apply in AndroidManifest: <application android:theme="@style/Theme.MacMic" ...>
+-->
+<resources>
+    <style name="Base.Theme.MacMic" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/primary</item>
+        <item name="android:colorPrimaryDark">@color/surface</item>
+        <item name="android:colorAccent">@color/primary</item>
+        <item name="android:colorControlActivated">@color/primary</item>
+        <item name="android:colorControlNormal">@color/on_surface_variant</item>
+        <item name="android:colorControlHighlight">@color/ripple_on_surface</item>
+        <item name="android:colorError">@color/error</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:textColorPrimary">@color/on_surface</item>
+        <item name="android:textColorSecondary">@color/on_surface_variant</item>
+        <item name="android:textColorTertiary">@color/outline</item>
+        <item name="android:textColorHint">@color/outline</item>
+        <item name="android:textColorLink">@color/primary</item>
+        <item name="android:textColorHighlight">@color/primary_container</item>
+
+        <!-- edge-to-edge: transparent bars, content draws behind; Activity pads via WindowInsets -->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/system_bar</item>
+        <item name="android:navigationBarColor">@color/system_bar</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:enforceStatusBarContrast">false</item>
+        <item name="android:enforceNavigationBarContrast">false</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:switchStyle">@style/Widget.MacMic.Switch</item>
+        <item name="android:alertDialogTheme">@android:style/Theme.DeviceDefault.Light.Dialog.Alert</item>
+    </style>
+
+    <style name="Theme.MacMic" parent="Base.Theme.MacMic" />
+</resources>

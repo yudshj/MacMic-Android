@@ -1,0 +1,20 @@
+build/
+native/opus-*/
+native/opus-*.tar.gz
+
+# Signing material must never be committed
+debug.keystore
+*.jks
+*.keystore
+*release*.properties
+
+# Build artifacts / packaged apps
+*.apk
+*.aab
+
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="432" height="432" viewBox="0 0 108 108">
+  <!-- adaptive icon preview: background + foreground, masked to the launcher circle (r=54). -->
+  <defs><clipPath id="m"><circle cx="54" cy="54" r="54"/></clipPath></defs>
+  <g clip-path="url(#m)">
+  <rect width="108" height="108" fill="#0F2B27"/>
+  <path d="M30,40a19,19 0 0,0 0,20M78,40a19,19 0 0,1 0,20" fill="none" stroke="#3E8F80" stroke-width="4" stroke-linecap="round"/>
+  <path d="M54,28h0a8,8 0 0,1 8,8v12a8,8 0 0,1 -8,8h0a8,8 0 0,1 -8,-8v-12a8,8 0 0,1 8,-8z" fill="#6FD8C4"/>
+  <path d="M37,50a17,17 0 0,0 34,0" fill="none" stroke="#6FD8C4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M54,67V76M46,77h16" fill="none" stroke="#6FD8C4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

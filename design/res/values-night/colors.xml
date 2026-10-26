@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  MacMic phone — Material 3 colour roles, DARK scheme (the hero / default look).
+  Seed: mint-teal #00A693 ("sound / signal"). Neutral surfaces are tinted slightly toward the seed.
+  Contrast (WCAG 2.1, checked by design/tools/check_contrast.py):
+    on_surface / surface            14.4:1   on_surface_variant / surface_container  9.6:1
+    primary / surface_container      9.6:1   on_primary / primary                    7.7:1
+    every text pair >= 7:1 (AAA) in dark; >= 4.5:1 (AA) in light.
+  Same names exist in values/colors.xml (light scheme).
+-->
+<resources>
+    <!-- primary: brand mint-teal -->
+    <color name="primary">#FF6FD8C4</color>
+    <color name="on_primary">#FF00382F</color>
+    <color name="primary_container">#FF005045</color>
+    <color name="on_primary_container">#FF8EF5E0</color>
+    <color name="inverse_primary">#FF006B5D</color>
+
+    <!-- secondary: desaturated teal (tonal buttons, chips) -->
+    <color name="secondary">#FFB1CCC5</color>
+    <color name="on_secondary">#FF1C3530</color>
+    <color name="secondary_container">#FF2A3F3B</color>
+    <color name="on_secondary_container">#FFCCE8E1</color>
+
+    <!-- tertiary: cool blue (USB / TCP transport accent) -->
+    <color name="tertiary">#FFA6CCEB</color>
+    <color name="on_tertiary">#FF0B3449</color>
+    <color name="tertiary_container">#FF254B61</color>
+    <color name="on_tertiary_container">#FFC8E6FF</color>
+
+    <!-- surfaces (tone-based M3 surface containers) -->
+    <color name="background">#FF0E1413</color>
+    <color name="on_background">#FFDEE4E2</color>
+    <color name="surface">#FF0E1413</color>
+    <color name="surface_dim">#FF0E1413</color>
+    <color name="surface_bright">#FF343A39</color>
+    <color name="surface_container_lowest">#FF090F0E</color>
+    <color name="surface_container_low">#FF161D1C</color>
+    <color name="surface_container">#FF1A2120</color>
+    <color name="surface_container_high">#FF242B2A</color>
+    <color name="surface_container_highest">#FF2F3635</color>
+    <color name="on_surface">#FFDEE4E2</color>
+    <color name="on_surface_variant">#FFBEC9C6</color>
+    <color name="surface_variant">#FF3F4947</color>
+    <color name="inverse_surface">#FFDEE4E2</color>
+    <color name="inverse_on_surface">#FF2B3230</color>
+    <color name="outline">#FF899391</color>
+    <color name="outline_variant">#FF3F4947</color>
+    <color name="scrim">#99000000</color>
+
+    <!-- status roles (fixed; not replaced by dynamic colour) -->
+    <color name="error">#FFFFB4AB</color>
+    <color name="on_error">#FF690005</color>
+    <color name="error_container">#FF93000A</color>
+    <color name="on_error_container">#FFFFDAD6</color>
+    <color name="success">#FF85D99A</color>
+    <color name="on_success">#FF00391A</color>
+    <color name="success_container">#FF005228</color>
+    <color name="on_success_container">#FFA1F5B4</color>
+    <color name="warning">#FFF5BE6B</color>
+    <color name="on_warning">#FF432C00</color>
+    <color name="warning_container">#FF5F4100</color>
+    <color name="on_warning_container">#FFFFDDB0</color>
+
+    <!-- "stop streaming" CTA: restrained red tonal (less shouty than error_container) -->
+    <color name="cta_stop_container">#FF5A1F1A</color>
+    <color name="on_cta_stop">#FFFFDAD6</color>
+
+    <!-- state-pill presets (dot colour + container + label) -->
+    <color name="state_idle_dot">#FF899391</color>
+    <color name="state_idle_container">#FF242B2A</color>
+    <color name="state_idle_on">#FFBEC9C6</color>
+    <color name="state_waiting_dot">#FFF5BE6B</color>
+    <color name="state_waiting_container">#FF3A2D12</color>
+    <color name="state_waiting_on">#FFFFDDB0</color>
+    <color name="state_connected_dot">#FF6FD8C4</color>
+    <color name="state_connected_container">#FF0F3832</color>
+    <color name="state_connected_on">#FF8EF5E0</color>
+    <color name="state_streaming_dot">#FF85D99A</color>
+    <color name="state_streaming_container">#FF123A23</color>
+    <color name="state_streaming_on">#FFA1F5B4</color>
+    <color name="state_error_dot">#FFFFB4AB</color>
+    <color name="state_error_container">#FF4A1512</color>
+    <color name="state_error_on">#FFFFDAD6</color>
+
+    <!-- system bars (edge-to-edge: transparent; icons follow windowLight*Bar) -->
+    <color name="system_bar">#00000000</color>
+    <!-- ripple overlay (M3 state layer ~ 12%) -->
+    <color name="ripple_on_surface">#1FDEE4E2</color>
+    <color name="ripple_on_primary">#2900382F</color>
+    <!-- log console -->
+    <color name="log_time">#FF899391</color>
+    <color name="log_text">#FFBEC9C6</color>
+    <color name="log_warn">#FFF5BE6B</color>
+    <color name="log_error">#FFFFB4AB</color>
+</resources>

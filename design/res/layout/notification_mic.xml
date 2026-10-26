@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Foreground-service notification content (RemoteViews). Use with
+  Notification.DecoratedCustomViewStyle: the system draws small icon / app name / time above it.
+  RemoteViews-safe widgets ONLY (LinearLayout, ImageView, TextView, Chronometer, Button) — no plain
+  <View>, no custom classes. Height stays under the 48dp collapsed cap on Android 12+.
+  Bind: notif_state_dot (setInt "setColorFilter"), notif_title, notif_text, notif_chrono, notif_stop.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/notif_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="48dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/notif_state_dot"
+        android:layout_width="@dimen/notif_dot"
+        android:layout_height="@dimen/notif_dot"
+        android:layout_marginEnd="@dimen/space_m"
+        android:importantForAccessibility="no"
+        android:src="@drawable/bg_dot" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/notif_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="正在推流到 192.168.1.40"
+            android:textAppearance="@android:style/TextAppearance.Material.Notification.Title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/notif_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Wi-Fi · UDP · 已运行"
+                android:textAppearance="@android:style/TextAppearance.Material.Notification" />
+
+            <Chronometer
+                android:id="@+id/notif_chrono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_xs"
+                android:maxLines="1"
+                android:textAppearance="@android:style/TextAppearance.Material.Notification"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/notif_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/notif_stop_height"
+        android:layout_marginStart="@dimen/space_m"
+        android:background="@drawable/bg_notif_stop"
+        android:contentDescription="@string/cd_notif_stop"
+        android:drawableStart="@drawable/ic_stop_small"
+        android:drawablePadding="@dimen/space_xs"
+        android:gravity="center"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingStart="@dimen/space_m"
+        android:paddingEnd="@dimen/space_l"
+        android:stateListAnimator="@null"
+        android:text="@string/notif_action_stop"
+        android:textAllCaps="false"
+        android:textAppearance="@android:style/TextAppearance.Material.Notification.Title"
+        android:textColor="@color/on_secondary_container"
+        android:textSize="14sp" />
+</LinearLayout>

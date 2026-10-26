@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 12+ (API 31): system splash screen uses the brand icon on the app background. -->
+<resources>
+    <style name="Theme.MacMic" parent="Base.Theme.MacMic">
+        <item name="android:windowSplashScreenBackground">@color/background</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/app_icon_background</item>
+    </style>
+</resources>

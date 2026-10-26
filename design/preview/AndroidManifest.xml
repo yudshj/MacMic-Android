@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Design preview APK only (separate package, installs side by side with the real app). -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.macmic.micserver.design"
+    android:versionCode="1"
+    android:versionName="design">
+    <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="36" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <application
+        android:label="MacMic Design"
+        android:icon="@mipmap/ic_launcher"
+        android:theme="@style/Theme.MacMic">
+        <activity android:name="com.macmic.micserver.PreviewActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

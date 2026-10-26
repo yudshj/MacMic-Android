@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "listening" halo around the hero badge: grow + fade, repeat. Load with AnimatorInflater and
+     setTarget(hero_pulse); start() in WAITING/STREAMING, cancel() + alpha=0 otherwise. -->
+<set xmlns:android="http://schemas.android.com/apk/res/android" android:ordering="together">
+    <objectAnimator android:propertyName="scaleX" android:valueFrom="0.73" android:valueTo="1.0"
+        android:duration="1600" android:repeatCount="infinite" android:repeatMode="restart"
+        android:interpolator="@android:interpolator/decelerate_cubic" android:valueType="floatType" />
+    <objectAnimator android:propertyName="scaleY" android:valueFrom="0.73" android:valueTo="1.0"
+        android:duration="1600" android:repeatCount="infinite" android:repeatMode="restart"
+        android:interpolator="@android:interpolator/decelerate_cubic" android:valueType="floatType" />
+    <objectAnimator android:propertyName="alpha" android:valueFrom="0.55" android:valueTo="0"
+        android:duration="1600" android:repeatCount="infinite" android:repeatMode="restart"
+        android:valueType="floatType" />
+</set>

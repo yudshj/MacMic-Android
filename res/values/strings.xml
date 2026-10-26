@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  MacMic phone — UI strings, ENGLISH fallback (values/). Chinese, the primary language, lives in
+  values-zh/strings.xml and is used on any zh-* locale. (Chinese can't live in values/: with a
+  device locale list like [zh-CN, en-US] Android would pick values-en over the default.)
+  Formatted strings use positional args (%1$s).
+  NOTE: app_name supersedes the one-line phone-app/res/values/strings.xml (merge, don't duplicate).
+-->
+<resources>
+    <string name="app_name">MacMic Server</string>
+    <string name="app_title">MacMic</string>
+    <string name="app_subtitle">Phone microphone server</string>
+
+    <!-- state pill (short, uppercase-free; English code shown to TalkBack via contentDescription) -->
+    <string name="state_stopped">Stopped</string>
+    <string name="state_waiting">Waiting</string>
+    <string name="state_handshaking">Handshaking</string>
+    <string name="state_connected">Connected</string>
+    <string name="state_streaming">Streaming</string>
+    <string name="state_error">Error</string>
+    <string name="cd_state_pill">Status: %1$s</string>
+
+    <!-- hero card -->
+    <string name="hero_title_stopped">Service is off</string>
+    <string name="hero_sub_stopped">Start the mic service below so your Mac can connect to this phone.</string>
+    <string name="hero_title_waiting">Waiting for your Mac</string>
+    <string name="hero_sub_waiting">Open MacMic on the Mac, choose Wi-Fi and enter the address below, or connect over USB.</string>
+    <string name="hero_title_handshaking">Handshaking…</string>
+    <string name="hero_sub_handshaking">%1$s connected, waiting for the protocol handshake.</string>
+    <string name="hero_title_connected">Connected</string>
+    <string name="hero_sub_connected">%1$s is connected, waiting to start streaming.</string>
+    <string name="hero_title_streaming">Streaming</string>
+    <string name="hero_sub_streaming">Microphone audio is being sent to %1$s as Opus 48 kHz.</string>
+    <string name="hero_title_error">Service error</string>
+    <string name="hero_sub_error_generic">%1$s</string>
+    <string name="hero_title_port_busy">Port 8125 is in use</string>
+    <string name="hero_sub_port_busy">Another WO Mic or MacMic server may be running. Close it and tap Retry; the service also retries every 3 s.</string>
+    <string name="hero_title_no_permission">Microphone permission needed</string>
+    <string name="hero_sub_no_permission">Grant the permission to start the service.</string>
+
+    <!-- primary CTA -->
+    <string name="cta_start">Start service</string>
+    <string name="cta_stop">Stop service</string>
+    <string name="cta_stop_streaming">Stop streaming</string>
+    <string name="cta_retry">Retry</string>
+    <string name="cta_starting">Starting…</string>
+    <string name="cd_cta_start">Start microphone service</string>
+    <string name="cd_cta_stop">Stop microphone service</string>
+
+    <!-- connection card -->
+    <string name="section_connection">Connection</string>
+    <string name="label_address">This phone</string>
+    <string name="label_transport">Transport</string>
+    <string name="label_peer">Client</string>
+    <string name="label_packets">Packets</string>
+    <string name="label_bytes">Sent</string>
+    <string name="label_uptime">Uptime</string>
+    <string name="address_none">No network</string>
+    <string name="address_format">%1$s:%2$d</string>
+    <string name="address_more">Other interfaces: %1$s</string>
+    <string name="usb_hint">USB: adb forward tcp:8125 tcp:8125</string>
+    <string name="transport_wifi">Wi-Fi · UDP</string>
+    <string name="transport_usb">USB · TCP (ADB)</string>
+    <string name="transport_none">—</string>
+    <string name="peer_none">Not connected</string>
+    <string name="stat_none">—</string>
+    <string name="stat_rate">%1$d pkt/s</string>
+    <string name="stat_dropped">%1$d dropped</string>
+    <string name="stat_bitrate">%1$d kbps</string>
+    <string name="stat_sessions">Session #%1$d</string>
+    <string name="copied_toast">Copied %1$s</string>
+    <string name="cd_copy_address">Copy address %1$s</string>
+
+    <!-- keep-alive card -->
+    <string name="section_keepalive">Keep alive</string>
+    <string name="keepalive_title">Keeps streaming with the screen locked</string>
+    <string name="keepalive_on">Running as a foreground service with a wake lock and low-latency Wi-Fi lock. Stop it any time from the lock-screen notification.</string>
+    <string name="keepalive_off">Once started it runs as a foreground service and shows its status in the notification shade.</string>
+    <string name="keepalive_battery">If the system kills it, set Settings › Apps › Battery to \"Unrestricted\".</string>
+    <string name="keepalive_lock_wake">WakeLock</string>
+    <string name="keepalive_lock_wifi">Wi-Fi lock</string>
+    <string name="keep_screen_title">Keep screen on</string>
+    <string name="keep_screen_desc">Only while this screen is open; uses more battery</string>
+
+    <!-- log card -->
+    <string name="section_log">Event log</string>
+    <string name="log_empty">No events yet</string>
+    <string name="log_copied">Recent events copied</string>
+    <string name="cd_copy_log">Copy event log</string>
+
+    <!-- empty / error banners -->
+    <string name="banner_perm_title">Microphone permission needed</string>
+    <string name="banner_perm_msg">MacMic needs the Microphone permission to capture audio and send it to your Mac.</string>
+    <string name="banner_perm_action">Grant</string>
+    <string name="banner_perm_denied_msg">Permission was denied permanently. Enable Microphone for MacMic in system settings.</string>
+    <string name="banner_perm_settings">Open settings</string>
+    <string name="banner_port_title">Port 8125 is in use</string>
+    <string name="banner_port_msg">Another WO Mic or MacMic server may be running. Close it, then tap Retry (auto-retries every 3 s).</string>
+    <string name="banner_port_action">Retry</string>
+    <string name="banner_notif_title">Notifications are off</string>
+    <string name="banner_notif_msg">The service still runs, but you won\'t see its status on the lock screen or be able to stop it there.</string>
+    <string name="banner_notif_action">Turn on</string>
+    <string name="banner_network_title">Not on Wi-Fi</string>
+    <string name="banner_network_msg">Wi-Fi mode needs the phone and Mac on the same network. You can use USB instead.</string>
+    <string name="banner_stopped_title">Service is off</string>
+    <string name="banner_stopped_msg">Your Mac can\'t connect to this phone right now.</string>
+    <string name="banner_dismiss">Got it</string>
+
+    <!-- notification -->
+    <string name="notif_channel_name">Microphone service</string>
+    <string name="notif_channel_desc">Shows the mic server status with a Stop button</string>
+    <string name="notif_title_waiting">Waiting for your Mac</string>
+    <string name="notif_title_connected">Connected to %1$s</string>
+    <string name="notif_title_streaming">Streaming to %1$s</string>
+    <string name="notif_title_error">Mic service error</string>
+    <string name="notif_text_waiting">%1$s · port 8125</string>
+    <string name="notif_text_streaming">%1$s · running</string>
+    <string name="notif_action_stop">Stop</string>
+    <string name="notif_action_open">Open</string>
+    <string name="cd_notif_stop">Stop microphone service</string>
+
+    <!-- misc -->
+    <string name="footer_format">v%1$s · port 8125 · libopus %2$s</string>
+    <string name="cd_app_icon">MacMic</string>
+</resources>

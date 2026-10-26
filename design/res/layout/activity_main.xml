@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  MacMic phone — main (only) screen. Platform widgets only; ids are the binding contract
+  documented in design/INTEGRATION.md §3. Edge-to-edge: the Activity applies system-bar /
+  cutout insets as padding on @id/root (see INTEGRATION.md §4.2).
+  Static texts below show the WAITING state so the layout previews sensibly.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:overScrollMode="ifContentScrolls"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/screen_margin"
+            android:paddingEnd="@dimen/screen_margin"
+            android:paddingBottom="@dimen/space_xl">
+
+            <!-- ======================= top bar: brand + state pill ======================= -->
+            <LinearLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="64dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/space_s"
+                android:paddingBottom="@dimen/space_xs">
+
+                <ImageView
+                    android:id="@+id/app_badge"
+                    android:layout_width="@dimen/app_badge"
+                    android:layout_height="@dimen/app_badge"
+                    android:importantForAccessibility="no"
+                    android:src="@mipmap/ic_launcher" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_m"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/app_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:accessibilityHeading="true"
+                        android:text="@string/app_title"
+                        android:textAppearance="@style/TextAppearance.MacMic.TitleLarge" />
+
+                    <TextView
+                        android:id="@+id/app_subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:text="@string/app_subtitle"
+                        android:textAppearance="@style/TextAppearance.MacMic.BodySmall" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/state_pill"
+                    style="@style/Widget.MacMic.Pill"
+                    android:layout_marginStart="@dimen/space_s"
+                    android:backgroundTint="@color/state_waiting_container"
+                    android:contentDescription="@string/state_waiting"
+                    android:focusable="true"
+                    android:accessibilityLiveRegion="polite">
+
+                    <View
+                        android:id="@+id/state_dot"
+                        android:layout_width="@dimen/dot"
+                        android:layout_height="@dimen/dot"
+                        android:background="@drawable/bg_dot"
+                        android:backgroundTint="@color/state_waiting_dot"
+                        android:importantForAccessibility="no" />
+
+                    <TextView
+                        android:id="@+id/txt_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space_s"
+                        android:importantForAccessibility="no"
+                        android:maxLines="1"
+                        android:text="@string/state_waiting"
+                        android:textAppearance="@style/TextAppearance.MacMic.LabelLarge"
+                        android:textColor="@color/state_waiting_on" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ======================= empty / error banner (GONE by default) ======================= -->
+            <LinearLayout
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_s"
+                android:background="@drawable/bg_banner"
+                android:backgroundTint="@color/state_waiting_container"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/space_l"
+                android:paddingTop="@dimen/space_l"
+                android:paddingEnd="@dimen/space_l"
+                android:paddingBottom="@dimen/space_s"
+                android:accessibilityLiveRegion="assertive"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/banner_icon"
+                    android:layout_width="@dimen/icon_m"
+                    android:layout_height="@dimen/icon_m"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_mic_off"
+                    android:tint="@color/state_waiting_on" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_l"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/banner_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/banner_perm_title"
+                        android:textAppearance="@style/TextAppearance.MacMic.TitleMedium"
+                        android:textColor="@color/state_waiting_on" />
+
+                    <TextView
+                        android:id="@+id/banner_message"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_xs"
+                        android:text="@string/banner_perm_msg"
+                        android:textAppearance="@style/TextAppearance.MacMic.BodyMedium"
+                        android:textColor="@color/state_waiting_on" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_xs"
+                        android:gravity="end|center_vertical"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/banner_dismiss"
+                            style="@style/Widget.MacMic.Button.Text"
+                            android:text="@string/banner_dismiss"
+                            android:textColor="@color/state_waiting_on"
+                            android:visibility="gone" />
+
+                        <Button
+                            android:id="@+id/banner_action"
+                            style="@style/Widget.MacMic.Button.Text"
+                            android:layout_marginStart="@dimen/space_xs"
+                            android:text="@string/banner_perm_action"
+                            android:textColor="@color/state_waiting_on" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ======================= hero: state + primary CTA ======================= -->
+            <LinearLayout
+                android:id="@+id/card_hero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_s"
+                android:background="@drawable/bg_card_hero"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="@dimen/card_padding_hero">
+
+                <FrameLayout
+                    android:id="@+id/hero_badge_frame"
+                    android:layout_width="@dimen/hero_pulse"
+                    android:layout_height="@dimen/hero_pulse"
+                    android:importantForAccessibility="noHideDescendants">
+
+                    <View
+                        android:id="@+id/hero_pulse"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:alpha="0"
+                        android:background="@drawable/bg_hero_pulse"
+                        android:backgroundTint="@color/state_waiting_dot" />
+
+                    <ImageView
+                        android:id="@+id/hero_badge"
+                        android:layout_width="@dimen/hero_badge"
+                        android:layout_height="@dimen/hero_badge"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_hero_badge"
+                        android:backgroundTint="@color/primary_container"
+                        android:padding="24dp"
+                        android:src="@drawable/ic_listening"
+                        android:tint="@color/on_primary_container" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/hero_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_m"
+                    android:gravity="center"
+                    android:accessibilityLiveRegion="polite"
+                    android:text="@string/hero_title_waiting"
+                    android:textAppearance="@style/TextAppearance.MacMic.Headline" />
+
+                <TextView
+                    android:id="@+id/txt_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_s"
+                    android:gravity="center"
+                    android:maxLines="4"
+                    android:ellipsize="end"
+                    android:text="@string/hero_sub_waiting"
+                    android:textAppearance="@style/TextAppearance.MacMic.BodyMedium" />
+
+                <!-- THE primary action: exactly one of btn_start / btn_stop is VISIBLE (INTEGRATION.md §3.2).
+                     Both are clickable LinearLayouts so icon + label stay centred together. -->
+                <LinearLayout
+                    android:id="@+id/btn_start"
+                    style="@style/Widget.MacMic.Cta"
+                    android:layout_marginTop="@dimen/space_xl"
+                    android:background="@drawable/bg_cta_primary"
+                    android:contentDescription="@string/cd_cta_start"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/btn_start_icon"
+                        android:layout_width="@dimen/cta_icon"
+                        android:layout_height="@dimen/cta_icon"
+                        android:duplicateParentState="true"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_play"
+                        android:tint="@color/on_primary" />
+
+                    <TextView
+                        android:id="@+id/btn_start_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space_s"
+                        android:duplicateParentState="true"
+                        android:importantForAccessibility="no"
+                        android:maxLines="1"
+                        android:text="@string/cta_start"
+                        android:textAppearance="@style/TextAppearance.MacMic.Cta"
+                        android:textColor="@color/on_primary" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btn_stop"
+                    style="@style/Widget.MacMic.Cta"
+                    android:layout_marginTop="@dimen/space_xl"
+                    android:background="@drawable/bg_cta_tonal"
+                    android:contentDescription="@string/cd_cta_stop">
+
+                    <ImageView
+                        android:id="@+id/btn_stop_icon"
+                        android:layout_width="@dimen/cta_icon"
+                        android:layout_height="@dimen/cta_icon"
+                        android:duplicateParentState="true"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_stop"
+                        android:tint="@color/on_secondary_container" />
+
+                    <TextView
+                        android:id="@+id/btn_stop_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space_s"
+                        android:duplicateParentState="true"
+                        android:importantForAccessibility="no"
+                        android:maxLines="1"
+                        android:text="@string/cta_stop"
+                        android:textAppearance="@style/TextAppearance.MacMic.Cta"
+                        android:textColor="@color/on_secondary_container" />
+                </LinearLayout>
+
+                <!-- secondary action, e.g. "停止服务" while the ERROR state is auto-retrying. GONE by default. -->
+                <Button
+                    android:id="@+id/btn_secondary"
+                    style="@style/Widget.MacMic.Button.Text"
+                    android:layout_marginTop="@dimen/space_s"
+                    android:text="@string/cta_stop"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- ======================= connection info ======================= -->
+            <LinearLayout
+                android:id="@+id/card_connection"
+                style="@style/Widget.MacMic.Card"
+                android:paddingBottom="@dimen/card_padding">
+
+                <TextView
+                    style="@style/Widget.MacMic.CardTitle"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="@dimen/space_xs"
+                    android:text="@string/section_connection" />
+
+                <!-- address: tap to copy -->
+                <LinearLayout
+                    android:id="@+id/row_address"
+                    style="@style/Widget.MacMic.Row"
+                    android:layout_marginStart="-8dp"
+                    android:layout_marginEnd="-8dp"
+                    android:paddingStart="@dimen/space_s"
+                    android:paddingEnd="@dimen/space_xs"
+                    android:background="@drawable/bg_row"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        style="@style/Widget.MacMic.RowIcon"
+                        android:src="@drawable/ic_signal" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/Widget.MacMic.RowLabel"
+                            android:text="@string/label_address" />
+
+                        <TextView
+                            android:id="@+id/address_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_xxs"
+                            android:text="192.168.1.23:8125"
+                            android:textAppearance="@style/TextAppearance.MacMic.Address"
+                            android:textIsSelectable="false" />
+
+                        <TextView
+                            android:id="@+id/address_extra"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_xxs"
+                            android:text="@string/usb_hint"
+                            android:textAppearance="@style/TextAppearance.MacMic.BodySmall" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/address_copy_icon"
+                        android:layout_width="@dimen/touch_min"
+                        android:layout_height="@dimen/touch_min"
+                        android:importantForAccessibility="no"
+                        android:padding="@dimen/space_m"
+                        android:src="@drawable/ic_copy"
+                        android:tint="@color/primary" />
+                </LinearLayout>
+
+                <View style="@style/Widget.MacMic.Divider" />
+
+                <LinearLayout
+                    android:id="@+id/row_transport"
+                    style="@style/Widget.MacMic.Row"
+                    android:focusable="true"
+                    android:screenReaderFocusable="true">
+
+                    <ImageView
+                        android:id="@+id/transport_icon"
+                        style="@style/Widget.MacMic.RowIcon"
+                        android:src="@drawable/ic_wifi" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/Widget.MacMic.RowLabel"
+                            android:text="@string/label_transport" />
+
+                        <TextView
+                            android:id="@+id/transport_value"
+                            style="@style/Widget.MacMic.RowValue"
+                            android:text="@string/transport_none" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View style="@style/Widget.MacMic.Divider" />
+
+                <LinearLayout
+                    android:id="@+id/row_peer"
+                    style="@style/Widget.MacMic.Row"
+                    android:focusable="true"
+                    android:screenReaderFocusable="true">
+
+                    <ImageView
+                        android:id="@+id/peer_icon"
+                        style="@style/Widget.MacMic.RowIcon"
+                        android:src="@drawable/ic_link_off" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/Widget.MacMic.RowLabel"
+                            android:text="@string/label_peer" />
+
+                        <TextView
+                            android:id="@+id/peer_value"
+                            style="@style/Widget.MacMic.RowValue"
+                            android:text="@string/peer_none" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- stats -->
+                <LinearLayout
+                    android:id="@+id/stats_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_s"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/stat_packets"
+                        style="@style/Widget.MacMic.StatTile">
+                        <TextView style="@style/Widget.MacMic.StatLabel" android:text="@string/label_packets" />
+                        <TextView android:id="@+id/stat_packets_value" style="@style/Widget.MacMic.StatValue" android:text="@string/stat_none" />
+                        <TextView android:id="@+id/stat_packets_sub" style="@style/Widget.MacMic.StatSub" android:text="" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/stat_bytes"
+                        style="@style/Widget.MacMic.StatTile"
+                        android:layout_marginStart="@dimen/space_s">
+                        <TextView style="@style/Widget.MacMic.StatLabel" android:text="@string/label_bytes" />
+                        <TextView android:id="@+id/stat_bytes_value" style="@style/Widget.MacMic.StatValue" android:text="@string/stat_none" />
+                        <TextView android:id="@+id/stat_bytes_sub" style="@style/Widget.MacMic.StatSub" android:text="" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/stat_uptime"
+                        style="@style/Widget.MacMic.StatTile"
+                        android:layout_marginStart="@dimen/space_s">
+                        <TextView style="@style/Widget.MacMic.StatLabel" android:text="@string/label_uptime" />
+                        <TextView android:id="@+id/stat_uptime_value" style="@style/Widget.MacMic.StatValue" android:text="@string/stat_none" />
+                        <TextView android:id="@+id/stat_uptime_sub" style="@style/Widget.MacMic.StatSub" android:text="" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ======================= keep-alive / lock screen ======================= -->
+            <LinearLayout
+                android:id="@+id/card_keepalive"
+                style="@style/Widget.MacMic.Card">
+
+                <TextView
+                    style="@style/Widget.MacMic.CardTitle"
+                    android:layout_width="match_parent"
+                    android:text="@string/section_keepalive" />
+
+                <LinearLayout
+                    android:id="@+id/keepalive_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_m"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:screenReaderFocusable="true">
+
+                    <ImageView
+                        android:id="@+id/keepalive_icon"
+                        style="@style/Widget.MacMic.RowIcon"
+                        android:src="@drawable/ic_lock"
+                        android:tint="@color/primary" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/keepalive_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/keepalive_title"
+                            android:textAppearance="@style/TextAppearance.MacMic.TitleMedium" />
+
+                        <TextView
+                            android:id="@+id/keepalive_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_xs"
+                            android:text="@string/keepalive_on"
+                            android:textAppearance="@style/TextAppearance.MacMic.BodyMedium" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_s"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/chip_wakelock"
+                                style="@style/Widget.MacMic.Chip"
+                                android:drawableStart="@drawable/bg_dot"
+                                android:drawableTint="@color/success"
+                                android:text="@string/keepalive_lock_wake" />
+
+                            <TextView
+                                android:id="@+id/chip_wifilock"
+                                style="@style/Widget.MacMic.Chip"
+                                android:layout_marginStart="@dimen/space_s"
+                                android:drawableStart="@drawable/bg_dot"
+                                android:drawableTint="@color/success"
+                                android:text="@string/keepalive_lock_wifi" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/keepalive_battery"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_s"
+                            android:text="@string/keepalive_battery"
+                            android:textAppearance="@style/TextAppearance.MacMic.BodySmall"
+                            android:textColor="@color/outline" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    style="@style/Widget.MacMic.Divider"
+                    android:layout_marginTop="@dimen/space_m" />
+
+                <LinearLayout
+                    android:id="@+id/row_keep_screen"
+                    style="@style/Widget.MacMic.Row"
+                    android:layout_marginBottom="-8dp">
+
+                    <ImageView
+                        style="@style/Widget.MacMic.RowIcon"
+                        android:src="@drawable/ic_screen_on" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/keep_screen_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:labelFor="@+id/chk_keep_screen_on"
+                            android:text="@string/keep_screen_title"
+                            android:textAppearance="@style/TextAppearance.MacMic.BodyLarge" />
+
+                        <TextView
+                            android:id="@+id/keep_screen_desc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/keep_screen_desc"
+                            android:textAppearance="@style/TextAppearance.MacMic.BodySmall" />
+                    </LinearLayout>
+
+                    <Switch
+                        android:id="@+id/chk_keep_screen_on"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space_l" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ======================= event log ======================= -->
+            <LinearLayout
+                android:id="@+id/card_log"
+                style="@style/Widget.MacMic.Card"
+                android:paddingTop="@dimen/space_xs">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/Widget.MacMic.CardTitle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/section_log" />
+
+                    <TextView
+                        android:id="@+id/log_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textAppearance="@style/TextAppearance.MacMic.LabelMedium"
+                        android:textColor="@color/outline" />
+
+                    <ImageView
+                        android:id="@+id/btn_log_copy"
+                        style="@style/Widget.MacMic.IconButton"
+                        android:layout_marginEnd="-12dp"
+                        android:clickable="true"
+                        android:contentDescription="@string/cd_copy_log"
+                        android:focusable="true"
+                        android:src="@drawable/ic_copy" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/log_viewport_height"
+                    android:layout_marginTop="@dimen/space_xs"
+                    android:background="@drawable/bg_log_console">
+
+                    <ScrollView
+                        android:id="@+id/log_scroll"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipToPadding="false"
+                        android:fadeScrollbars="true"
+                        android:nestedScrollingEnabled="true"
+                        android:paddingStart="@dimen/space_m"
+                        android:paddingTop="@dimen/space_s"
+                        android:paddingEnd="@dimen/space_m"
+                        android:paddingBottom="@dimen/space_s"
+                        android:scrollbarStyle="outsideOverlay"
+                        android:scrollbars="vertical">
+
+                        <!-- newest first; MainActivity sets a Spannable (time = log_time colour,
+                             warnings/errors = log_warn / log_error). See item_log.xml for a row-based variant. -->
+                        <TextView
+                            android:id="@+id/txt_events"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:breakStrategy="simple"
+                            android:textAppearance="@style/TextAppearance.MacMic.Mono"
+                            android:focusable="false" />
+                    </ScrollView>
+
+                    <TextView
+                        android:id="@+id/log_empty"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/log_empty"
+                        android:textAppearance="@style/TextAppearance.MacMic.BodyMedium"
+                        android:textColor="@color/outline"
+                        android:visibility="gone" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/footer_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_l"
+                android:gravity="center"
+                android:text="v1.0.0 · 端口 8125 · libopus 1.5.2"
+                android:textAppearance="@style/TextAppearance.MacMic.BodySmall"
+                android:textColor="@color/outline" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

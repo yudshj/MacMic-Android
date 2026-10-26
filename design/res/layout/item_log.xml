@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  One event-log row: "12:03:41.208  STATE STREAMING 192.168.1.40:51234 - 0x67 start capture".
+  Status.recentEvents() lines are "HH:mm:ss.SSS  message" → split at the first two spaces.
+  Colour log_message with @color/log_error / log_warn when the text contains "error"/"REJECTED" etc.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="3dp"
+    android:paddingBottom="3dp">
+
+    <TextView
+        android:id="@+id/log_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:text="12:03:41"
+        android:textAppearance="@style/TextAppearance.MacMic.Mono"
+        android:textColor="@color/log_time" />
+
+    <TextView
+        android:id="@+id/log_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_m"
+        android:layout_weight="1"
+        android:breakStrategy="simple"
+        android:text="STATE LISTENING"
+        android:textAppearance="@style/TextAppearance.MacMic.Mono" />
+</LinearLayout>
